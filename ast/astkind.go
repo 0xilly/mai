@@ -15,4 +15,11 @@ const (
 	CallExprKind
 	ArrayIndexExprKind
 	FieldAccessExprKind
+
+	BaseTypeKind
+	PointerTypeKind
+	ArrayTypeKind
+	MultiTypeKind
+	GenericTypeKind
+	NilableTypeKind
 )
