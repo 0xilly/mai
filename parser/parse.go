@@ -72,6 +72,33 @@ func (p *Parser) report_bad_token(expect token.TokenType) {
 
 }
 
+func (p *Parser) report_bad_literal() {
+	msg := fmt.Sprintf("Bad token [%s] found expected a literal.", p.current.Type.String())
+
+	err := ParseError{
+		File:    p.file,
+		Line:    p.current.Line,
+		Column:  p.current.Column,
+		Message: msg,
+	}
+
+	p.Errors = append(p.Errors, err)
+
+}
+
+func (p *Parser) report_generic_error(msg string) {
+	message := fmt.Sprintf("Bad token [%s] found, %s", p.current.Type.String(), msg)
+
+	err := ParseError{
+		File:    p.file,
+		Line:    p.current.Line,
+		Column:  p.current.Column,
+		Message: message,
+	}
+
+	p.Errors = append(p.Errors, err)
+}
+
 func (p *Parser) sync() {
 	for p.current.Type != token.T_EOF {
 		switch p.current.Type {
