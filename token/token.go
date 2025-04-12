@@ -240,10 +240,7 @@ var tokenNames = map[TokenType]string{
 }
 
 func (tn TokenType) String() string {
-	if s, ok := tokenNames[tn]; ok {
-		return s
-	}
-	return fmt.Sprintf("%s", tn)
+	return tokenNames[tn]
 }
 
 func (tn TokenType) IsPrimitive() bool { return tn >= PRIMITIVE_START && tn <= PRIMITIVE_END }
